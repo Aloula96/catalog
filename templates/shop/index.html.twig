@@ -1,0 +1,38 @@
+{# templates/shop/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShopController!{% endblock %}
+
+{% block body %}
+    <h1>Tous nos articles</h1>
+
+    {# Login/Logout Links #}
+    {% if user %}
+        <p>Hello, {{ user.email }}! <a href="{{ path('app_logout') }}">Logout</a></p>
+    {% else %}
+        <p><a href="{{ path('app_login') }}">Login</a> | <a href="{{ path('app_register') }}">Register</a></p>
+    {% endif %}
+
+    {# List All Clubs #}
+    {% if clubs|length > 0 %}
+        <div class="row">
+            {% for club in clubs %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                        <img src="{{ asset(club.image) }}" alt="{{ club.label }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ club.label }}</h5>
+                            <p class="card-text">{{ club.price }} Euros</p>
+                            <p class="card-text">{{ club.yearAt ? club.yearAt|date('Y-m-d') : 'N/A' }}</p>
+                            <p class="card-text">{{ club.country.label }}</p>
+                            <a href="{{ path('shop_single', {'id': club.id}) }}" class="btn btn-primary" target="_blank">Maillot</a>
+                            <a href="{{ path('shop_league', {'id': club.id}) }}" class="btn btn-primary" target="_blank">League</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No clubs available at the moment.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modify country {% endblock %}
+
+{% block body %}
+    <h1>Edit country: {{ country.label }}</h1>
+
+
+{{ form_start(form) }}
+
+{{ form_label(form.label) }}
+
+
+{{ form_end(form) }}
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+{% endblock %}
