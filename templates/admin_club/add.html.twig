@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminbase.html.twig' %}
 
 {% block title %}Hello AdminCategorieController!{% endblock %}
 
@@ -10,7 +10,7 @@
 
 {{ form_row(form.label) }}
 
-<button type="submit">Ajouter une nouveaux club</button>
+<button  class="btn btn-primary" type="submit">Ajouter une nouveaux club</button>
 {{ form_end(form) }}
 
 {% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminCategorieController!{% endblock %}
+
+  {% block body %}
+  <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    Content Management
+  </a>
+
+  
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Menu</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+  
+      <div class="dropdown mt-3">
+       
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+            <li class="nav-item">
+                <a class="nav-link"  class="nav-link px-0" href="{{ path('app_admin_categorie') }}">Manage Leagues</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  class="nav-link px-0" href="{{ path('app_admin_club') }}">Manage Clubs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  class="nav-link px-0" href="{{ path('app_admin_pays') }}">Manage Country</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <a href="{{ path('app_admin_categorie_add')}}" type="submit">Add a league</a>
+  <table class="table table-striped">
+      <thead>
+          <tr>
+              <th>Championnats</th>
+              <th>Lire</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
+              
+          </tr>
+      </thead>
+      <tbody>
+          {% for league in leagues %}
+              <tr>
+                  <td>{{ league.label }}</td>
+                   <td><a href="{{ path('app_admin_categorie_show', {'id': league.id}) }}" class="btn btn-info btn-sm">Voir</a></td> 
+                  <td><a href="{{ path('app_admin_categorie_modify', {'id': league.id}) }}" class="btn btn-warning btn-sm">Modify</a></td>
+                   <td><a href="{{ path('app_admin_categorie_delete', {'id': league.id}) }}" class="btn btn-danger btn-sm">Delete</a></td> 
+            
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+{% endblock %}

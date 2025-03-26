@@ -9,7 +9,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             
                 <li class="nav-item">
-                    <a class="nav-link active text-light" aria-current="page" href="{{path('home')}}">Home</a>
+                    <a class="nav-link active text-light" aria-current="page" href="{{path('home')}}"><span class="ms-1 d-none d-sm-inline">Home</span></a></li>
                 
                
            <li class="nav-item">
@@ -20,7 +20,7 @@
                     <p>bienvenue, {{app.user.email}}</p>
                     {% endif %}
 
-                    <a class="nav-link active text-light" aria-current="page" href="{{path('app_logout')}}" >Se déconnecter</a>
+                    <a class="nav-link text-truncate" aria-current="page" href="{{path('app_logout')}}" >Se déconnecter</a>
                    
                 </li>
                 <li class="nav-item">
@@ -28,10 +28,21 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active text-light" aria-current="page" href="{{path('app_register')}}" >s'inscrire</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active text-light" aria-current="page" href="{{path('app_admin')}}" >Admin</a>
-                </li>
+                </li>{% if app.user and "ROLE_ADMIN" in app.user.roles %}
+                <div class="btnAdmin">
+                  <a class="btn btn-primary s" href=" {{ path('app_admin')}} ">Admin</a>
+                </div>
+                {% endif %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Les categories
+                    </a>
+                     <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" >Serie A</a></li>
+                      <li><a class="dropdown-item" >Ligue 1</a></li>
+                      <li><a class="dropdown-item">EPL</a></li>
+                    </ul> 
+                  </li>
              
                 {# <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="">Categorie</a>

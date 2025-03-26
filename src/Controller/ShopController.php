@@ -42,19 +42,19 @@ public function index(ClubRepository $ClubRepository ): Response
     $user = $this->getUser();
     return $this->render('shop/index.html.twig', [
         'clubs' => $clubs,
-        'user' => $user, // Pass user to template for login/logout logic
+        'user' => $user, 
     ]);
 }
 
     #[Route('/league/{id}', name: 'shop_league')] //, requirements: ['id' => '\d+'])
-    public function league(int $id, LeagueRepository $leagueRepository): Response
+    public function league(int $id, ClubRepository $clubRepository): Response
     {
 
-        $clubs = $leagueRepository->findBy([
+        $clubs = $clubRepository->findby([
             'league' => $id,
         ]);
-         dd($clubs);
-        return $this->render('shop/league.html.twig', [
+       
+        return $this->render('shop/category.html.twig', [
             'clubs' => $clubs,
         ]);
     }

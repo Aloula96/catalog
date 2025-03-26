@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminbase.html.twig' %}
 
 {% block title %}Hello AdminCategorieController!{% endblock %}
 
@@ -27,9 +27,27 @@
                   <td>{{ club.label }}</td>
                    <td><a href="{{ path('app_admin_club_show', {'id': club.id}) }}" class="btn btn-info btn-sm">Voir</a></td> 
                   <td><a href="{{ path('app_admin_club_modify', {'id': club.id}) }}" class="btn btn-warning btn-sm">Modify</a></td>
-                   <td><a href="{{ path('app_admin_club_delete', {'id': club.id}) }}" class="btn btn-danger btn-sm">Delete</a></td> 
+                   <td><a href="{{ path('app_admin_club_delete', {'id': club.id}) }}"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-danger btn-sm">Delete</a></td> 
                
               </tr>
+               <!-- Modal -->
+               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Etes-vous sur de vouloir supprimer le championnat : {{ club.label }}
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                      <button type="submit" class="btn btn-primary">Valider</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
           {% endfor %}
       </tbody>
   </table>

@@ -11,13 +11,15 @@
         {% for club in clubs %}
         <div class="col-md-4 ">
             <div class="card">
-                <img src="{{ asset(club.image) }}">
+            
                 <div class="card-body">
+                    <img src="{{ asset(club.image) }}" alt="{{ club.label }}" class="card-img-top">
                     <h5 class="card-title">{{ club.label }}</h5>
-                    <p class="card-text">{{ club.price }} Euros</p>
-                    <p class="card-text">{{ club.yearAt.date }}</p>
-                    {# <p class="card-text">{{ club.country.label }}</p> #}
-                    <a href="{{ path('shop_single', {'id' : club.id }) }}" class="btn btn-primary" target="_blank">Maillot</a>
+                    <p class="card-text">{{ club.yearAt ? club.yearAt|date('Y') : 'N/A' }}</p>
+                    <p class="card-title">{{ club.price|cash }}</p>
+
+                    
+                    <a href="{{ path('shop_league', {'id' : club.league.id }) }}" class="btn btn-primary" target="_blank">league</a>
     
                 </div>
             </div>

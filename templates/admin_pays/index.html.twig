@@ -1,18 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminbase.html.twig' %}
 
 {% block title %}Modify country {% endblock %}
 
 {% block body %}
     <h1>Show the clubs</h1>
     
-    <a href="{{ path('app_admin_country_add')}}" type="submit">Add a country</a>
+    <a  class="btn btn-primary" href="{{ path('app_admin_country_add')}}" type="submit">Add a country</a>
 
 
     
     
     
       <table class="table table-striped">
-          <thead>
+          <thead >
               <tr>
                   <th>Country</th>
                   <th>Lire</th>
@@ -26,10 +26,35 @@
                       <td>{{ country.label }}</td>
                        <td><a href="{{ path('app_admin_country_show', {'id': country.id}) }}" class="btn btn-info btn-sm">Voir</a></td> 
                        <td><a href="{{ path('app_admin_country_modify', {'id': country.id}) }}" class="btn btn-warning btn-sm">Modify</a></td>
-                       <td><a href="{{ path('app_admin_country_delete', {'id': country.id}) }}" class="btn btn-danger btn-sm">Delete</a></td>  
+                       <td><a href="{{ path('app_admin_country_delete', {'id': country.id}) }}" class="btn btn-danger btn-sm">Delete</a></td> 
+                        
                    
                   </tr>
+                  
+           <!-- Modal -->
+           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmation</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Etes-vous sur de vouloir supprimer le championnat : {{ country.label }}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                  <button type="submit" class="btn btn-primary">Valider</button>
+                </div>
+              </div>
+            </div>
+          </div>
               {% endfor %}
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Soumettre
+            </button>
+    
+         
           </tbody>
       </table>
 

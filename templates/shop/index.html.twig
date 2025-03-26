@@ -23,10 +23,10 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ club.label }}</h5>
                             <p class="card-text">{{ club.price }} Euros</p>
-                            <p class="card-text">{{ club.yearAt ? club.yearAt|date('Y-m-d') : 'N/A' }}</p>
+                            <p class="card-text">{{ club.yearAt ? club.yearAt|date('Y') : 'N/A' }}</p>
                             <p class="card-text">{{ club.country.label }}</p>
                             <a href="{{ path('shop_single', {'id': club.id}) }}" class="btn btn-primary" target="_blank">Maillot</a>
-                            <a href="{{ path('shop_league', {'id': club.id}) }}" class="btn btn-primary" target="_blank">League</a>
+                            <a href="{{ path('shop_league', {'id': league.id}) }}" class="btn btn-primary" target="_blank">League</a>
                         </div>
                     </div>
                 </div>

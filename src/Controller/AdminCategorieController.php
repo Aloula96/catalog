@@ -54,7 +54,7 @@ class AdminCategorieController extends AbstractController
             $entityManager->persist($league);
             $entityManager->flush();
          
-            // return $this->redirectToRoute('app_admin_categorie');
+            return $this->redirectToRoute('app_admin_categorie');
         }
 
         return $this->render('admin_categorie/modify.html.twig', [
@@ -103,4 +103,6 @@ class AdminCategorieController extends AbstractController
             'league' => $league,
         ]);
     }
+ 
+    
 }
